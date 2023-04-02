@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <head>
+    <meta charset = "utf-8">
+    <title>Cppcheck – HTML report – QEMU</title>
+    <link rel = "stylesheet" href = "style.css">
+    <style>
+
+    </style>
+    <script language = "javascript">
+      function getStyle(el,styleProp) {
+        if (el.currentStyle)
+          var y = el.currentStyle[styleProp];
+        else if (window.getComputedStyle)
+          var y = document.defaultView.getComputedStyle(el,null).getPropertyValue(styleProp);
+        return y;
+      }
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+        if (el.style.display = =  "block") {
+          el.style.display = "none";
+          mark.innerHTML = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.innerHTML = "[-]";
+        }
+      }
+      function init_expandables() {
+        var elts = document.getElementsByClassName("expandable");
+        for (var i = 0; i < elts.length; i++) {
+          var el = elts[i];
+          var clickable = el.getElementsByTagName("span")[0];
+          var marker = clickable.getElementsByClassName("marker")[0];
+          var content = el.getElementsByClassName("content")[0];
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.onclick = toggle;
+        }
+      }
+      function set_class_display(c, st) {
+        var elements = document.querySelectorAll('.' + c),
+            len = elements.length;
+        for (i = 0; i < len; i++) {
+            elements[i].style.display = st;
+        }
+      }
+      function toggle_class_visibility(id) {
+        var box = document.getElementById(id);
+        set_class_display(id, box.checked ? '' : 'none');
+      }
+      function toggle_all(){
+        var elts = document.getElementsByTagName("input");
+        for (var i = 1; i < elts.length; i++) {           
+          var el = elts[i];
+          el.checked ? el.checked = false : el.checked = true;
+          toggle_class_visibility(el.id);        
+        }            
+      }
+
+    </script>
+  </head>
+  <body onload = "init_expandables()">
+      <div id = "header">
+        <h1>Cppcheck report – QEMU: Statistics </h1>
+      </div>
+      <div id = "menu_index">
+       <p id = "filename"><a href = "index.html">Back to summary</a> </p>
+
+      </div>
+      <div id = "content_index">
+<p>Top 10 files for error severity, total findings: 973</br>
+&#160;&#160;&#160;27&#160;<a href = "1553.html">  qemu/target/ppc/cpu-qom.h</a></br>
+&#160;&#160;&#160;22&#160;<a href = "1582.html">  qemu/target/xtensa/cpu-qom.h</a></br>
+&#160;&#160;&#160;19&#160;<a href = "1558.html">  qemu/target/riscv/cpu.h</a></br>
+&#160;&#160;&#160;18&#160;<a href = "1800.html">  qemu/tests/tcg/s390x/noexec.c</a></br>
+&#160;&#160;&#160;16&#160;<a href = "1459.html">  qemu/target/arm/cpu.h</a></br>
+&#160;&#160;&#160;15&#160;<a href = "1563.html">  qemu/target/s390x/cpu-qom.h</a></br>
+&#160;&#160;&#160;15&#160;<a href = "1161.html">  qemu/hw/s390x/ccw-device.h</a></br>
+&#160;&#160;&#160;15&#160;<a href = "595.html">  qemu/audio/audio_int.h</a></br>
+&#160;&#160;&#160;15&#160;<a href = "449.html">  qemu/QEMU/hw/s390x/ccw-device.h</a></br>
+&#160;&#160;&#160;14&#160;<a href = "1576.html">  qemu/target/sparc/cpu-qom.h</a></br>
+</p>
+<p>Top 10 files for warning severity, total findings: 968</br>
+&#160;&#160;&#160;548&#160;<a href = "1754.html">  qemu/tests/tcg/mips/include/test_utils_128.h</a></br>
+&#160;&#160;&#160;48&#160;&#160;<a href = "1755.html">  qemu/tests/tcg/mips/include/test_utils_64.h</a></br>
+&#160;&#160;&#160;30&#160;&#160;<a href = "1740.html">  qemu/tests/tcg/hexagon/reg_mut.c</a></br>
+&#160;&#160;&#160;17&#160;&#160;<a href = "765.html">  qemu/hw/arm/omap1.c</a></br>
+&#160;&#160;&#160;17&#160;&#160;<a href = "53.html">  qemu/QEMU/hw/arm/omap1.c</a></br>
+&#160;&#160;&#160;15&#160;&#160;<a href = "1747.html">  qemu/tests/tcg/i386/test-i386-fprem.c</a></br>
+&#160;&#160;&#160;15&#160;&#160;<a href = "1336.html">  qemu/linux-user/syscall.c</a></br>
+&#160;&#160;&#160;14&#160;&#160;<a href = "1207.html">  qemu/hw/timer/exynos4210_mct.c</a></br>
+&#160;&#160;&#160;14&#160;&#160;<a href = "495.html">  qemu/QEMU/hw/timer/exynos4210_mct.c</a></br>
+&#160;&#160;&#160;10&#160;&#160;<a href = "1538.html">  qemu/target/mips/tcg/fpu_helper.c</a></br>
+</p>
+<p>Top 10 files for portability severity, total findings: 1262</br>
+&#160;&#160;&#160;59&#160;<a href = "1737.html">  qemu/tests/tcg/hexagon/hvx_misc.c</a></br>
+&#160;&#160;&#160;58&#160;<a href = "721.html">  qemu/disas/sparc.c</a></br>
+&#160;&#160;&#160;58&#160;<a href = "9.html">  qemu/QEMU/disas/sparc.c</a></br>
+&#160;&#160;&#160;57&#160;<a href = "1474.html">  qemu/target/arm/tcg/sve_helper.c</a></br>
+&#160;&#160;&#160;52&#160;<a href = "1532.html">  qemu/target/mips/cpu-defs.c.inc</a></br>
+&#160;&#160;&#160;34&#160;<a href = "1473.html">  qemu/target/arm/tcg/sme_helper.c</a></br>
+&#160;&#160;&#160;30&#160;<a href = "1467.html">  qemu/target/arm/tcg/vec_internal.h</a></br>
+&#160;&#160;&#160;23&#160;<a href = "1916.html">  qemu/util/bufferiszero.c</a></br>
+&#160;&#160;&#160;22&#160;<a href = "1336.html">  qemu/linux-user/syscall.c</a></br>
+&#160;&#160;&#160;19&#160;<a href = "1480.html">  qemu/target/arm/tcg/vec_helper.c</a></br>
+</p>
+<p>Top 10 files for style severity, total findings: 10352</br>
+&#160;&#160;&#160;625&#160;<a href = "1478.html">  qemu/target/arm/tcg/translate-sve.c</a></br>
+&#160;&#160;&#160;370&#160;<a href = "1540.html">  qemu/target/mips/tcg/msa_helper.c</a></br>
+&#160;&#160;&#160;324&#160;<a href = "1479.html">  qemu/target/arm/tcg/translate.c</a></br>
+&#160;&#160;&#160;288&#160;<a href = "1536.html">  qemu/target/mips/tcg/dsp_helper.c</a></br>
+&#160;&#160;&#160;276&#160;<a href = "2224.html">  qemu/target/arm/tcg/translate-mve.c</a></br>
+&#160;&#160;&#160;258&#160;<a href = "1538.html">  qemu/target/mips/tcg/fpu_helper.c</a></br>
+&#160;&#160;&#160;252&#160;<a href = "2219.html">  qemu/target/arm/tcg/translate-neon.c</a></br>
+&#160;&#160;&#160;179&#160;<a href = "1541.html">  qemu/target/mips/tcg/msa_translate.c</a></br>
+&#160;&#160;&#160;165&#160;<a href = "1493.html">  qemu/target/hppa/translate.c</a></br>
+&#160;&#160;&#160;150&#160;<a href = "1559.html">  qemu/target/rx/disas.c</a></br>
+</p>
+<p>Top 10 files for information severity, total findings: 507</br>
+&#160;&#160;&#160;97&#160;<a href = "732.html">  qemu/gdbstub/user-target.c</a></br>
+&#160;&#160;&#160;97&#160;<a href = "20.html">  qemu/QEMU/gdbstub/user-target.c</a></br>
+&#160;&#160;&#160;36&#160;<a href = "713.html">  qemu/disas/hppa.c</a></br>
+&#160;&#160;&#160;36&#160;<a href = "1.html">  qemu/QEMU/disas/hppa.c</a></br>
+&#160;&#160;&#160;19&#160;<a href = "1336.html">  qemu/linux-user/syscall.c</a></br>
+&#160;&#160;&#160;15&#160;<a href = "1590.html">  qemu/tcg/tcg.c</a></br>
+&#160;&#160;&#160;13&#160;<a href = "627.html">  qemu/block/file-posix.c</a></br>
+&#160;&#160;&#160;12&#160;<a href = "673.html">  qemu/chardev/char-serial.c</a></br>
+&#160;&#160;&#160;10&#160;<a href = "1942.html">  qemu/util/osdep.c</a></br>
+&#160;&#160;&#160;8&#160;&#160;<a href = "598.html">  qemu/audio/dsoundaudio.c</a></br>
+</p>
+
+      </div>
+      <div id = "footer">
+        <p>
+         Cppcheck 1.90 – a tool for static C/C++ code analysis</br>
+         </br>
+         Internet: <a href = "http://cppcheck.net">http://cppcheck.net</a></br>
+         IRC: <a href = "irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a></br>
+        </p>
+      </div>
+  </body>
+</html>
