@@ -15,7 +15,7 @@ tecatech@alpha:~/secure-software-development/lab2$ ls -l
 total 7168
 drwxr-xr-x 63 tecatech tecatech    4096 Apr  1 17:00 qemu
 -rw-r--r--  1 tecatech tecatech 7328587 Apr  1 18:00 report.xml
-tecatech@alpha:~/secure-software-development/lab2$ cppcheck-htmlreport --report-dir=report/ --file=report.xml --source-dir=qemu/
+tecatech@alpha:~/secure-software-development/lab2$ cppcheck-htmlreport --file=report.xml --report-dir=report/ --source-dir=qemu/
 Creating index.html
 Creating style.css file
 Creating stats.html (statistics)
